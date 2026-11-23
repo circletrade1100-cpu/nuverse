@@ -1,0 +1,67 @@
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Environment & secrets
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.backup
+**/.env.backup.*
+**/.env.production
+!.env.example
+!.env.production.template
+
+# Build / cache
+**/dist/
+**/dist-ssr/
+**/.vite/
+**/public/build/
+**/public/hot/
+**/public/storage
+frontend/dist.zip
+backend/bootstrap/cache/*.php
+!backend/bootstrap/cache/.gitkeep
+
+# Laravel storage (keep structure only)
+backend/storage/logs/*
+!backend/storage/logs/.gitkeep
+backend/storage/framework/cache/data/*
+!backend/storage/framework/cache/data/.gitkeep
+backend/storage/framework/sessions/*
+!backend/storage/framework/sessions/.gitkeep
+backend/storage/framework/views/*
+!backend/storage/framework/views/.gitkeep
+backend/storage/app/public/*
+!backend/storage/app/public/.gitkeep
+backend/storage/*.key
+backend/database/*.sqlite
+
+# WhatsApp runtime
+whatsapp-service/logs/
+whatsapp-service/uploads/*
+!whatsapp-service/uploads/.gitkeep
+whatsapp-service/.node-persist/
+whatsapp-service/_IGNORE_*/
+whatsapp-service/*.session*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs & temp
+*.log
+npm-debug.log*
+yarn-error.log*
+.phpunit.result.cache
+.phpunit.cache/
+
+# Local deploy artifacts
+*.bak
+*.backup
+*.filepart

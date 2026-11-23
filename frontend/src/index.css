@@ -1,0 +1,435 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles untuk aplikasi Annur */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar Styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.scrollbar-track-slate-100::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 12px;
+}
+
+.scrollbar-thumb-slate-300::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 12px;
+  border: 2px solid #f1f5f9;
+}
+
+.scrollbar-thumb-slate-300:hover::-webkit-scrollbar-thumb,
+.hover\:scrollbar-thumb-slate-400:hover::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 12px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Modal Animation Enhancement */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-animate {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.backdrop-animate {
+  animation: backdropFadeIn 0.3s ease-out;
+}
+
+/* Zoom Level Responsive Design */
+@media screen and (min-width: 1920px) {
+  /* 4K and larger screens */
+  .modal-container {
+    min-width: 60vw;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  /* Ultra-wide and 4K+ screens */
+  .modal-container {
+    min-width: 50vw;
+    max-width: 80vw;
+  }
+}
+
+/* Handle zoom levels with viewport-based sizing */
+@media screen and (min-resolution: 2dppx) {
+  /* High DPI screens or zoomed in */
+  .modal-responsive {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-resolution: 1dppx) {
+  /* Standard DPI or zoomed out */
+  .modal-responsive {
+    font-size: 1.1rem;
+  }
+}
+
+/* Container width adjustments for different zoom levels */
+.container-responsive {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-adaptive {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: clamp(0.5rem, 2vw, 2rem);
+  padding-right: clamp(0.5rem, 2vw, 2rem);
+}
+
+/* Auto-responsive for all screen sizes and zoom levels */
+@media screen and (max-width: 640px) {
+  .container-adaptive {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  .container-adaptive {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .container-adaptive {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1535px) {
+  .container-adaptive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .container-adaptive {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Zoom level detection and adjustment */
+@media screen and (min-resolution: 1.25dppx) and (max-resolution: 1.75dppx) {
+  /* 125% - 175% zoom */
+  .container-adaptive {
+    padding-left: clamp(0.75rem, 2.5vw, 2.5rem);
+    padding-right: clamp(0.75rem, 2.5vw, 2.5rem);
+  }
+}
+
+@media screen and (min-resolution: 1.76dppx) and (max-resolution: 2.5dppx) {
+  /* 176% - 250% zoom */
+  .container-adaptive {
+    padding-left: clamp(1rem, 3vw, 3rem);
+    padding-right: clamp(1rem, 3vw, 3rem);
+  }
+}
+
+@media screen and (min-resolution: 2.51dppx) {
+  /* 250%+ zoom */
+  .container-adaptive {
+    padding-left: clamp(1.25rem, 4vw, 4rem);
+    padding-right: clamp(1.25rem, 4vw, 4rem);
+  }
+}
+
+/* Modal positioning fix for all devices */
+.modal-with-sidebar {
+  position: fixed;
+  inset: 0;
+  z-index: 9999 !important;
+  overflow-y: auto;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998 !important;
+}
+
+.modal-content-container {
+  position: relative;
+  z-index: 10000 !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Mobile specific fixes */
+@media screen and (max-width: 1023px) {
+  .modal-with-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .modal-content-container {
+    padding: 1rem;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100% !important;
+  }
+  
+  .modal-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9998 !important;
+  }
+  
+  /* Ensure modal content is visible */
+  .modal-animate {
+    margin: 0 !important;
+    transform: none !important;
+  }
+  
+  /* Prevent body scroll when modal is open on mobile */
+  body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Ensure modal form text is always dark */
+.modal-content-container * {
+  color: inherit;
+}
+
+.modal-content-container {
+  color: #1e293b; /* Default dark text */
+}
+
+.modal-content-container label,
+.modal-content-container .text-slate-700,
+.modal-content-container .text-slate-800,
+.modal-content-container h4,
+.modal-content-container h3,
+.modal-content-container h2,
+.modal-content-container h1,
+.modal-content-container p,
+.modal-content-container span,
+.modal-content-container div {
+  color: #334155 !important; /* slate-700 */
+}
+
+.modal-content-container .text-slate-800,
+.modal-content-container .font-semibold,
+.modal-content-container .font-bold {
+  color: #1e293b !important; /* slate-800 */
+}
+
+.modal-content-container .text-slate-600 {
+  color: #475569 !important; /* slate-600 */
+}
+
+.modal-content-container .text-slate-500 {
+  color: #64748b !important; /* slate-500 */
+}
+
+.modal-content-container .text-slate-400 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Form inputs text color */
+.modal-content-container input,
+.modal-content-container select,
+.modal-content-container textarea,
+.modal-content-container button {
+  color: #1e293b !important; /* slate-800 */
+}
+
+.modal-content-container input::placeholder,
+.modal-content-container select::placeholder,
+.modal-content-container textarea::placeholder {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Override any white text */
+.modal-content-container .text-white {
+  color: #ffffff !important;
+}
+
+/* Red text for required asterisks */
+.modal-content-container .text-red-500 {
+  color: #ef4444 !important;
+}
+
+/* Blue text for links/highlights */
+.modal-content-container .text-blue-600 {
+  color: #2563eb !important;
+}
+
+.modal-content-container .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+/* Green text for success states */
+.modal-content-container .text-emerald-600,
+.modal-content-container .text-green-600 {
+  color: #059669 !important;
+}
+
+/* Desktop specific fixes */
+@media screen and (min-width: 1024px) {
+  .modal-with-sidebar {
+    position: fixed;
+    inset: 0;
+    z-index: 9999 !important;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9998 !important;
+  }
+  
+  .modal-content-container {
+    position: relative;
+    z-index: 10000 !important;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+/* Force modal buttons to always be visible */
+.modal-buttons-fixed {
+  position: sticky !important;
+  bottom: 0 !important;
+  background: white !important;
+  z-index: 999 !important;
+  margin-top: auto !important;
+  padding: 1rem !important;
+  border-top: 1px solid #e2e8f0 !important;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure modal content doesn't overflow */
+.modal-form-container {
+  max-height: 80vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.modal-form-content {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  max-height: 65vh !important;
+  padding-bottom: 1rem !important;
+  padding-right: 0.5rem !important;
+}
+
+/* Modal with proper height and scroll behavior */
+.modal-with-sidebar .modal-content-container {
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modal-with-sidebar .modal-container {
+  max-height: 85vh !important;
+}
+
+/* Ensure modal body content is scrollable */
+.modal-with-sidebar .modal-container .bg-white {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.modal-with-sidebar .modal-container .flex-1 {
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #cbd5e1 #f1f5f9 !important;
+}
+
+.modal-form-footer {
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  bottom: 0 !important;
+  background: white !important;
+  z-index: 999 !important;
+  margin-top: auto !important;
+  border-top: 2px solid #e2e8f0 !important;
+  box-shadow: 0 -4px 12px -4px rgba(0, 0, 0, 0.15) !important;
+}
